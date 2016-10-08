@@ -4,31 +4,105 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")*@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+    <!-- Start header -->
+    <header id="header">
+        <!-- header top search -->
+        <div class="header-top">
+            <div class="container">
+                <form action="">
+                    <div id="search">
+                        <input type="text" placeholder="Ingresa el Tema o Curso que desees consultar" name="s" id="m_search" style="display: inline-block;">
+                        <button type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+        <!-- header bottom -->
+        <div class="header-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="header-contact">
+                            <ul>
+                                <!--<li>
+                                  <div class="phone">
+                                    <i class="fa fa-phone"></i>
+                                    +1(800) 699-7071
+                                  </div>
+                                </li>-->
+                                <li>
+                                    <div class="mail">
+                                        <i class="fa fa-envelope"></i>
+                                        thot@gmail.com
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="header-login">
+                            <a class="login modal-form" data-target="#login-form" data-toggle="modal" href="#">Ingresar / Registrar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End header -->
+    <section id="menu-area">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- LOGO -->
+                    <!-- TEXT BASED LOGO -->
+                    <a class="navbar-brand" href="index.html">Thot</a>
+                    <!-- IMG BASED LOGO  -->
+                    <!-- <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="logo"></a> -->
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+                        <li class="active"><a href="index.html">Inicio</a></li>
+                        <!--<li><a href="feature.html">¿Que es Thot?</a></li> -->
+                        <li><a href="">¿Que es Thot?</a></li>
+                        <!--  <li><a href="service.html">Service</a></li>
+                          <li><a href="portfolio.html">Portfolio</a></li>-->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <span class="fa fa-angle-down"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <!-- <li><a href="blog-archive.html">Cálculo</a></li> -->
+                                <li><a href="">Cálculo</a></li>
+                                <!--  <li><a href="blog-single-with-left-sidebar.html">Blog Single with Left Sidebar</a></li>
+                                  <li><a href="blog-single-with-right-sidebar.html">Blog Single with Right Sidebar</a></li>
+                                  <li><a href="blog-single-with-out-sidebar.html">Blog Single with out Sidebar</a></li>-->
+                            </ul>
+                        </li>
+                        <!--   <li><a href="404.html">404 Page</a></li> -->
+                        <!-- <li><a href="contact.html">Contacto</a></li>-->
+                        <li><a href="">Contacto</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+                <a href="#" id="search-icon">
+                    <i class="fa fa-search">
+                    </i>
+                </a>
+            </div>
+        </nav>
+    </section>
+    <!-- END MENU -->
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -37,8 +111,8 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)*@
 </body>
 </html>
