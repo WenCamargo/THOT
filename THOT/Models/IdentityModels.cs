@@ -29,5 +29,16 @@ namespace THOT.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Area> Areas { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Score> Scores { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Test> Tests { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<Unit>Units { get; set; }
+
+        
     }
 }
