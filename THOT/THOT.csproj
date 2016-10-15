@@ -217,6 +217,18 @@
     <Compile Include="Migrations\201610130116554_second.Designer.cs">
       <DependentUpon>201610130116554_second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610151822396_Third.cs" />
+    <Compile Include="Migrations\201610151822396_Third.Designer.cs">
+      <DependentUpon>201610151822396_Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610151823501_Fourth.cs" />
+    <Compile Include="Migrations\201610151823501_Fourth.Designer.cs">
+      <DependentUpon>201610151823501_Fourth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610151830329_Fifth.cs" />
+    <Compile Include="Migrations\201610151830329_Fifth.Designer.cs">
+      <DependentUpon>201610151830329_Fifth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -352,6 +364,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610130116554_second.resx">
       <DependentUpon>201610130116554_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610151822396_Third.resx">
+      <DependentUpon>201610151822396_Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610151823501_Fourth.resx">
+      <DependentUpon>201610151823501_Fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610151830329_Fifth.resx">
+      <DependentUpon>201610151830329_Fifth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

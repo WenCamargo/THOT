@@ -167,3 +167,6 @@ C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.csproj.GenerateResource.Cache
 C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.dll
 C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.pdb
 C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.second.resources
+C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.Third.resources
+C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.Fourth.resources
+C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.Fifth.resources

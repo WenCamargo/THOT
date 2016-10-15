@@ -79,6 +79,20 @@ namespace THOT.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Nombre")]
+        public string Name { get; set; }
+        [Required]
+        [Display(Name = "Apellido Paterno")]
+        public string FirstLastName { get; set; }
+        [Required]
+        [Display(Name = "Apellido Materno")]
+        public string SecondLastName { get; set; }
+        [Required]
+        //Expresion REGULAR
+        [Display(Name = "Número de Boleta")]
+        public string StudentId { get; set; }
     }
 
     public class ResetPasswordViewModel
