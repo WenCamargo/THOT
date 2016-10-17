@@ -44,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Content)
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -63,4 +63,20 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+                var editor = CKEDITOR.instances['Content'];
+                if (editor) {
+                    editor.destroy(true);
+                }
+                CKEDITOR.replace("Content", {
+
+                    enterMode: CKEDITOR.ENTER_BR,
+                    extraPlugins: 'mathjax',
+                    mathJaxLib: 'http://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS_HTML',
+                    height: 320
+                });
+                CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder")');
+    </script>
 }
