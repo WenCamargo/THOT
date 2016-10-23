@@ -10,6 +10,7 @@ using THOT.Models;
 
 namespace THOT.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class TestsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -28,6 +29,15 @@ namespace THOT.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Test test = db.Tests.Find(id);
+
+            var questions = db.Questions.Where(x => x.TestId == test.TestId).ToList();
+            foreach(var q in questions)
+            {
+                q.Answers = db.Answers.Where(a => a.QuestionId == q.QuestionId).ToList();
+            }
+
+            test.Questions = questions;
+
             if (test == null)
             {
                 return HttpNotFound();
@@ -38,6 +48,7 @@ namespace THOT.Controllers
         // GET: Tests/Create
         public ActionResult Create()
         {
+            ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "Number");
             return View();
         }
 

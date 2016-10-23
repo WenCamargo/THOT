@@ -10,7 +10,7 @@ using THOT.Models;
 
 namespace THOT.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+   
     public class SubjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -23,6 +23,7 @@ namespace THOT.Controllers
         }
 
         // GET: Subjects/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +39,7 @@ namespace THOT.Controllers
         }
 
         // GET: Subjects/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.AreaId = new SelectList(db.Areas, "AreaId", "Name");
@@ -49,6 +51,7 @@ namespace THOT.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "SubjectId,AreaId,Name")] Subject subject)
         {
             if (ModelState.IsValid)
@@ -63,6 +66,7 @@ namespace THOT.Controllers
         }
 
         // GET: Subjects/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +87,7 @@ namespace THOT.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "SubjectId,AreaId,Name")] Subject subject)
         {
             if (ModelState.IsValid)
@@ -96,6 +101,7 @@ namespace THOT.Controllers
         }
 
         // GET: Subjects/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +119,7 @@ namespace THOT.Controllers
         // POST: Subjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Subject subject = db.Subjects.Find(id);

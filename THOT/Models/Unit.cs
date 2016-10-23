@@ -12,10 +12,13 @@ namespace THOT.Models
     [Table("Unit")]
     public class Unit
     {
+        [Display(Name = "Unidad")]
         public int UnitId { get; set; }
         public int SubjectId { get; set; }
-        [StringLength(10)]
+        [Required]
+        [StringLength(5)]
         public string Number { get; set; }
+        [Required]
         [StringLength(100)]
         public string Name { get; set; }
         public Subject Subject { get; set; }

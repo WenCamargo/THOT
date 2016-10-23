@@ -205,6 +205,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\ScoresController.cs" />
+    <Compile Include="Controllers\StudentTestsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
@@ -232,6 +233,18 @@
     <Compile Include="Migrations\201610151830329_Fifth.Designer.cs">
       <DependentUpon>201610151830329_Fifth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610221859586_Sixth.cs" />
+    <Compile Include="Migrations\201610221859586_Sixth.Designer.cs">
+      <DependentUpon>201610221859586_Sixth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610221948274_Seven.cs" />
+    <Compile Include="Migrations\201610221948274_Seven.Designer.cs">
+      <DependentUpon>201610221948274_Seven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610221955324_Eight.cs" />
+    <Compile Include="Migrations\201610221955324_Eight.Designer.cs">
+      <DependentUpon>201610221955324_Eight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -240,6 +253,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Score.cs" />
+    <Compile Include="Models\StudentTest.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Topic.cs" />
@@ -262,6 +276,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -350,6 +365,11 @@
     <Content Include="Views\Units\Details.cshtml" />
     <Content Include="Views\Units\Edit.cshtml" />
     <Content Include="Views\Units\Index.cshtml" />
+    <Content Include="Views\StudentTests\Create.cshtml" />
+    <Content Include="Views\StudentTests\Delete.cshtml" />
+    <Content Include="Views\StudentTests\Details.cshtml" />
+    <Content Include="Views\StudentTests\Edit.cshtml" />
+    <Content Include="Views\StudentTests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,6 +401,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610151830329_Fifth.resx">
       <DependentUpon>201610151830329_Fifth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610221859586_Sixth.resx">
+      <DependentUpon>201610221859586_Sixth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610221948274_Seven.resx">
+      <DependentUpon>201610221948274_Seven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610221955324_Eight.resx">
+      <DependentUpon>201610221955324_Eight.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

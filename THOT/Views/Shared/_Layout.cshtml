@@ -28,29 +28,39 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
                     @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @if (User.IsInRole("Administrator"))
                     {
                         <li>@Html.ActionLink("Areas", "Index", "Areas")</li>
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Courses Management </a>
+                            <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Gestionar Cursos </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Subjects", "Index", "Subjects")</li>
-                                <li>@Html.ActionLink("Units", "Index", "Units")</li>
-                                <li>@Html.ActionLink("Topics", "Index", "Topics")</li>
+                                <li>@Html.ActionLink("Materias", "Index", "Subjects")</li>
+                                <li>@Html.ActionLink("Unidades", "Index", "Units")</li>
+                                <li>@Html.ActionLink("Temas", "Index", "Topics")</li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Tests Management </a>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Gestionar Test </a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Tests", "Index", "Tests")</li>
-                                <li>@Html.ActionLink("Questions", "Index", "Questions")</li>
-                                <li>@Html.ActionLink("Answers", "Index", "Answers")</li>
+                                <li>@Html.ActionLink("Preguntas", "Index", "Questions")</li>
+                                <li>@Html.ActionLink("Respuestas", "Index", "Answers")</li>
                             </ul>
                         </li>
                     }
+                    else
+                    {
+                        if (User.IsInRole("Student"))
+                        {
+
+                           <li>@Html.ActionLink("Cursos", "Index", "Subjects")</li>
+                        }
+
+                    }
+                    
                     
                     </ul>
 

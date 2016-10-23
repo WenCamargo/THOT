@@ -10,6 +10,7 @@ using THOT.Models;
 
 namespace THOT.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AnswersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -37,10 +38,18 @@ namespace THOT.Controllers
         }
 
         // GET: Answers/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
-            ViewBag.QuestionId = new SelectList(db.Questions, "QuestionId", "Description");
-            return View();
+            var question = db.Questions.Find(id);
+            if(question != null)
+            {
+                ViewBag.QuestionId = question.QuestionId;
+                ViewBag.QuestionName = question.Description;
+                return View();
+
+            }
+            //ViewBag.QuestionId = new SelectList(db.Questions, "QuestionId", "Description");
+            return View(500);
         }
 
         // POST: Answers/Create
@@ -52,9 +61,20 @@ namespace THOT.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Answers.Add(answer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var cont = db.Answers.Where(x => x.QuestionId == answer.QuestionId).ToList().Count;
+                if (cont < 4)
+                {
+                    db.Answers.Add(answer);
+                    db.SaveChanges();
+                    return RedirectToAction("Create", new { id = answer.QuestionId });
+                }
+                else
+                {
+                    return RedirectToAction("Create", "Questions");
+                }
+                
+               
+                
             }
 
             ViewBag.QuestionId = new SelectList(db.Questions, "QuestionId", "Description", answer.QuestionId);

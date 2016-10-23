@@ -11,8 +11,13 @@ namespace THOT.Models
     [Table("Test")]
     public class Test
     {
+        [Display(Name = "Test")]
         public int TestId { get; set; }
+        [Display(Name = "Tema")]
         public int TopicId { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
         public Topic Topic { get; set; }
         public List<Question> Questions { get; set; }

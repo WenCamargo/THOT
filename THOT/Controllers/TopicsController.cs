@@ -15,6 +15,7 @@ namespace THOT.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Topics
+        [Authorize(Roles = "Administrator,Student")]
         public ActionResult Index()
         {
             var topics = db.Topics.Include(t => t.Unit);
@@ -38,6 +39,7 @@ namespace THOT.Controllers
         }
 
         // GET: Topics/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Number");
@@ -50,6 +52,7 @@ namespace THOT.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "TopicId,UnitId,Number,Name,Content")] Topic topic)
         {
             if (ModelState.IsValid)
@@ -64,6 +67,7 @@ namespace THOT.Controllers
         }
 
         // GET: Topics/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +89,7 @@ namespace THOT.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "TopicId,UnitId,Number,Name,Content")] Topic topic)
         {
             if (ModelState.IsValid)
@@ -98,6 +103,7 @@ namespace THOT.Controllers
         }
 
         // GET: Topics/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -115,6 +121,7 @@ namespace THOT.Controllers
         // POST: Topics/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Topic topic = db.Topics.Find(id);

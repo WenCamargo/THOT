@@ -24,11 +24,30 @@
 
         <dd>
             @Html.DisplayFor(model => model.Name)
-        </dd>
+        </dd>   
 
        
 
     </dl>
+  
+        @foreach(var q in Model.Questions)
+        {
+            <div class="row">               
+                 <div class="col-md-12">@q.Description</div>                   
+            </div>
+
+            foreach (var a in q.Answers)
+            {
+                
+                <div class="row">
+                    <div class="radio">
+                        <label><input type="radio" name="@q.QuestionId">@a.Description</label>
+                    </div>                    
+                </div>
+            }
+        }
+    
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.TestId }) |

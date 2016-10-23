@@ -10,113 +10,112 @@ using THOT.Models;
 
 namespace THOT.Controllers
 {
-    [Authorize(Roles = "Administrator")]
-    public class QuestionsController : Controller
+    public class StudentTestsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Questions
+        // GET: StudentTests
         public ActionResult Index()
         {
-            var questions = db.Questions.Include(q => q.Test);
-            return View(questions.ToList());
+            var studentTests = db.StudentTests.Include(s => s.Test);
+            return View(studentTests.ToList());
         }
 
-        // GET: Questions/Details/5
+        // GET: StudentTests/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
-            if (question == null)
+            StudentTest studentTest = db.StudentTests.Find(id);
+            if (studentTest == null)
             {
                 return HttpNotFound();
             }
-            return View(question);
+            return View(studentTest);
         }
 
-        // GET: Questions/Create
+        // GET: StudentTests/Create
         public ActionResult Create()
         {
             ViewBag.TestId = new SelectList(db.Tests, "TestId", "Name");
             return View();
         }
 
-        // POST: Questions/Create
+        // POST: StudentTests/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "QuestionId,TestId,Description")] Question question)
+        public ActionResult Create([Bind(Include = "StudentTestId,UserId,TestId,Grade,CreationDate")] StudentTest studentTest)
         {
             if (ModelState.IsValid)
             {
-                db.Questions.Add(question);
+                db.StudentTests.Add(studentTest);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Answers", new { id = question.QuestionId});
+                return RedirectToAction("Index");
             }
 
-            ViewBag.TestId = new SelectList(db.Tests, "TestId", "Name", question.TestId);
-            return View(question);
+            ViewBag.TestId = new SelectList(db.Tests, "TestId", "Name", studentTest.TestId);
+            return View(studentTest);
         }
 
-        // GET: Questions/Edit/5
+        // GET: StudentTests/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
-            if (question == null)
+            StudentTest studentTest = db.StudentTests.Find(id);
+            if (studentTest == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.TestId = new SelectList(db.Tests, "TestId", "Name", question.TestId);
-            return View(question);
+            ViewBag.TestId = new SelectList(db.Tests, "TestId", "Name", studentTest.TestId);
+            return View(studentTest);
         }
 
-        // POST: Questions/Edit/5
+        // POST: StudentTests/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "QuestionId,TestId,Description")] Question question)
+        public ActionResult Edit([Bind(Include = "StudentTestId,UserId,TestId,Grade,CreationDate")] StudentTest studentTest)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(question).State = EntityState.Modified;
+                db.Entry(studentTest).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.TestId = new SelectList(db.Tests, "TestId", "Name", question.TestId);
-            return View(question);
+            ViewBag.TestId = new SelectList(db.Tests, "TestId", "Name", studentTest.TestId);
+            return View(studentTest);
         }
 
-        // GET: Questions/Delete/5
+        // GET: StudentTests/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
-            if (question == null)
+            StudentTest studentTest = db.StudentTests.Find(id);
+            if (studentTest == null)
             {
                 return HttpNotFound();
             }
-            return View(question);
+            return View(studentTest);
         }
 
-        // POST: Questions/Delete/5
+        // POST: StudentTests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Question question = db.Questions.Find(id);
-            db.Questions.Remove(question);
+            StudentTest studentTest = db.StudentTests.Find(id);
+            db.StudentTests.Remove(studentTest);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

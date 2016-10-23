@@ -14,6 +14,8 @@ namespace THOT.Models
     {
         public int QuestionId { get; set; }
         public int TestId { get; set; }
+        [Required]
+        [StringLength(100)]
         public string Description { get; set; }
         public Test Test { get; set; }
         public List<Answer> Answers { get; set; }

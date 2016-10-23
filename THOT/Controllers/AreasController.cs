@@ -10,6 +10,7 @@ using THOT.Models;
 
 namespace THOT.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AreasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
