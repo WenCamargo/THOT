@@ -11,9 +11,11 @@ namespace THOT.Models
     [Table("Area")]
     public class Area
     {
+        [Display(Name = "Area")]
         public int AreaId { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Area")]
         public string Name { get; set; }
         public List<Subject> Subject { get; set; }
 

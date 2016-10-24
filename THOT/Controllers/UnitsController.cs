@@ -10,12 +10,13 @@ using THOT.Models;
 
 namespace THOT.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    
     public class UnitsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Units
+        [Authorize(Roles = "Administrator, Student")]
         public ActionResult Index()
         {
             var units = db.Units.Include(u => u.Subject);
@@ -23,6 +24,7 @@ namespace THOT.Controllers
         }
 
         // GET: Units/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace THOT.Controllers
         }
 
         // GET: Units/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "Name");
@@ -49,6 +52,7 @@ namespace THOT.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "UnitId,SubjectId,Number,Name")] Unit unit)
         {
             if (ModelState.IsValid)
@@ -63,6 +67,7 @@ namespace THOT.Controllers
         }
 
         // GET: Units/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +88,7 @@ namespace THOT.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "UnitId,SubjectId,Number,Name")] Unit unit)
         {
             if (ModelState.IsValid)
@@ -96,6 +102,7 @@ namespace THOT.Controllers
         }
 
         // GET: Units/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,6 +120,7 @@ namespace THOT.Controllers
         // POST: Units/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Unit unit = db.Units.Find(id);

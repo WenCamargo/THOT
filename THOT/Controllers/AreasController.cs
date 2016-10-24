@@ -18,7 +18,8 @@ namespace THOT.Controllers
         // GET: Areas
         public ActionResult Index()
         {
-            return View(db.Areas.ToList());
+            var units = db.Areas.Include(u => u.Subject);
+            return View(units.ToList());
         }
 
         // GET: Areas/Details/5

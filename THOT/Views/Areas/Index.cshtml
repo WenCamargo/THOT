@@ -28,7 +28,11 @@
                 <i class="glyphicon glyphicon-pencil"></i>
                 <span class="sr-only">Edit</span>
             </a>|
-            @Html.ActionLink("Details", "Details", new { id=item.AreaId }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.AreaId }) |*@ 
+            @*<a href="@Url.Action("Details", new { id=item.AreaId})">
+                <i class="glyphicon glyphicon-info-sign"></i>
+                <span class="sr-only">Details</span>
+            </a>|*@
             @*@Html.ActionLink("Delete", "Delete", new { id=item.AreaId })*@
             <a href="@Url.Action("Delete", new { id=item.AreaId})">
                 <i class="glyphicon glyphicon-trash"></i>

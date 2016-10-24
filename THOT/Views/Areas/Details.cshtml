@@ -21,6 +21,14 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AreaId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.AreaId }) |*@
+    <a href="@Url.Action("Edit", new { id=Model.AreaId })">
+        <i class="glyphicon glyphicon-pencil"></i>
+        <span class="sr-only">Edit</span>
+    </a>|
+    @*@Html.ActionLink("Back to List", "Index")*@
+    <a href="@Url.Action("Index")">
+        <i class="glyphicon glyphicon-arrow-left"></i>
+        <span class="sr-only">Back</span>
+    </a>
 </p>

@@ -16,6 +16,7 @@ namespace THOT.Models
         public int AreaId { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Materia")]
         public string Name { get; set; }
         public Area Area { get; set; }
         public List<Unit> Units { get; set; }

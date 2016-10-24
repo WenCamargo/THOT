@@ -16,6 +16,7 @@ namespace THOT.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Subjects
+        [Authorize(Roles = "Administrator, Student")]
         public ActionResult Index()
         {
             var subjects = db.Subjects.Include(s => s.Area);

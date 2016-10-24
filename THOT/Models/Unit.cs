@@ -17,9 +17,11 @@ namespace THOT.Models
         public int SubjectId { get; set; }
         [Required]
         [StringLength(5)]
+        [Display(Name = "Unidad")]
         public string Number { get; set; }
         [Required]
         [StringLength(100)]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
         public Subject Subject { get; set; }
         public List<Topic> Topics { get; set; }
