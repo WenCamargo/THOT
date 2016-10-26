@@ -14,7 +14,6 @@ namespace THOT.Models
         public int AnswerId { get; set; }
         public int QuestionId { get; set; }
         [Required]
-        [StringLength(100)]
         public string Description { get; set; }
         public bool IsCorrect { get; set; }
         public Question Question { get; set; }

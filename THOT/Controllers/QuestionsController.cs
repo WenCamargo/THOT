@@ -49,6 +49,7 @@ namespace THOT.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "QuestionId,TestId,Description")] Question question)
         {
             if (ModelState.IsValid)
@@ -83,6 +84,7 @@ namespace THOT.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "QuestionId,TestId,Description")] Question question)
         {
             if (ModelState.IsValid)

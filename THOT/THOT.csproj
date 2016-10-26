@@ -245,6 +245,10 @@
     <Compile Include="Migrations\201610221955324_Eight.Designer.cs">
       <DependentUpon>201610221955324_Eight.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610242311217_Nine.cs" />
+    <Compile Include="Migrations\201610242311217_Nine.Designer.cs">
+      <DependentUpon>201610242311217_Nine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -266,6 +270,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\style.css" />
+    <Content Include="favicon-def.ico" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -411,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610221955324_Eight.resx">
       <DependentUpon>201610221955324_Eight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610242311217_Nine.resx">
+      <DependentUpon>201610242311217_Nine.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

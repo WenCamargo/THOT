@@ -33,7 +33,7 @@
         @foreach(var q in Model.Questions)
         {
             <div class="row">               
-                 <div class="col-md-12">@q.Description</div>                   
+                 <div class="col-md-12">@Html.Raw(@q.Description)</div>                   
             </div>
 
             foreach (var a in q.Answers)
@@ -41,7 +41,7 @@
                 
                 <div class="row">
                     <div class="radio">
-                        <label><input type="radio" name="@q.QuestionId">@a.Description</label>
+                        <label><input type="radio" name="@q.QuestionId">@Html.Raw(HttpUtility.HtmlDecode( a.Description))</label>
                     </div>                    
                 </div>
             }
@@ -53,3 +53,14 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.TestId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@foreach (var q in Model.Questions)
+{
+
+    foreach (var a in q.Answers)
+    {
+        @Html.Raw(q.Description)
+
+       @Html.Raw(a.Description)
+    }
+}

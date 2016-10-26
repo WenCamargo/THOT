@@ -263,3 +263,4 @@ C:\Users\German\Source\Repos\THOT\THOT\bin\CKFinder.pdb
 C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.Sixth.resources
 C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.Seven.resources
 C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.Eight.resources
+C:\Users\Wen\Source\Repos\THOT\THOT\obj\Debug\THOT.Migrations.Nine.resources
