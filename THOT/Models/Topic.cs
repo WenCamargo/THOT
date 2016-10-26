@@ -13,14 +13,18 @@ namespace THOT.Models
     {
         [Display(Name = "Tema")]
         public int TopicId { get; set; }
+        [Display(Name = "Unidad")]
         public int UnitId { get; set; }
         [Required]
         [StringLength(50)]
+        [Display(Name = "Tema")]
         public string Number { get; set; }
         [Required]
         [StringLength(250)]
+        [Display(Name = "Tema")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Contenido")]
         public string Content { get; set; }
         public Unit Unit { get; set; }
 

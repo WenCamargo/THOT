@@ -1,9 +1,10 @@
 ﻿@model THOT.Models.Topic
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Contenido";
 }
-
+@if (User.IsInRole("Administrator"))
+{
 <h2>Details</h2>
 
 <div>
@@ -48,3 +49,21 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.TopicId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+}
+else
+{
+    if (User.IsInRole("Student"))
+    {
+       <div class="jumbotron">
+           <div class="container">
+               @Html.Raw(Model.Content)
+           </div>
+       </div> 
+        
+       
+
+    }
+
+}
+
+
