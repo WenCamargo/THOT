@@ -110,7 +110,8 @@ namespace THOT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Topic topic = db.Topics.Find(id);
+            var topics = db.Topics.Include(t => t.Unit);
+            Topic topic = topics.ToList().Find(t => t.TopicId == id);
             if (topic == null)
             {
                 return HttpNotFound();

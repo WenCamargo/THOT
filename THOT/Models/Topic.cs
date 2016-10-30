@@ -21,7 +21,7 @@ namespace THOT.Models
         public string Number { get; set; }
         [Required]
         [StringLength(250)]
-        [Display(Name = "Tema")]
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
         [Required]
         [Display(Name = "Contenido")]
