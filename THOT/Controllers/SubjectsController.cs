@@ -23,7 +23,20 @@ namespace THOT.Controllers
             return View(subjects.ToList());
         }
 
-        // GET: Subjects/Details/5
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        public ActionResult GetUnitsBySubjectId(int? id)
+        {
+            var UnitsList = db.Units.Where(x => x.SubjectId == id).ToList();
+
+            SelectList units = new SelectList(UnitsList, "UnitId", "Number");
+
+            return Json(units);
+
+        }
+
+        // GET: Subjects/Details/5 
         [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {

@@ -22,6 +22,16 @@ namespace THOT.Controllers
             return View(topics.ToList());
         }
 
+        // GET: Tipics/idUnit 
+        [Authorize(Roles = "Administrator, Student")]
+        public ActionResult UnitsTopics(int? id)
+        {
+
+            var topics = db.Topics.Where(x => x.UnitId == id).Include(u => u.Unit);
+            //var units2 = db.Units.OrderBy(u => u.Subject);
+            return View("Index", topics.ToList());
+        }
+
         // GET: Topics/Details/5
         public ActionResult Details(int? id)
         {
@@ -42,7 +52,9 @@ namespace THOT.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
-            ViewBag.UnitId = new SelectList(db.Units, "UnitId", "Number");
+            ViewBag.SubjectId = new SelectList(db.Subjects, "SubjectId", "Name", 1);
+            ViewBag.UnitId = new SelectList(db.Units.Where(x=> x.SubjectId == db.Subjects.FirstOrDefault().SubjectId), "UnitId", "Number");
+
             return View();
         }
 

@@ -25,15 +25,15 @@ namespace THOT.Controllers
             return View(units.ToList());
         }
 
-        //// GET: Units Student
-        //[Authorize(Roles = "Student")]
-        //public ActionResult IndexS(int? id)
-        //{
+        // GET: Units / SubjectId
+        [Authorize(Roles = "Administrator, Student")]
+        public ActionResult SubjectsUnits(int? id)
+        {
 
-        //    var units = db.Units.Include(u => u.Subject);
-        //    //var units2 = db.Units.OrderBy(u => u.Subject);
-        //    return View(units.ToList());
-        //}
+            var units = db.Units.Where(x=> x.SubjectId == id).Include(u => u.Subject);
+            //var units2 = db.Units.OrderBy(u => u.Subject);
+            return View("Index",units.ToList());
+        }
 
         // GET: Units/Details/5
         [Authorize(Roles = "Administrator")]
