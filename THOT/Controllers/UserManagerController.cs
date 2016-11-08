@@ -70,7 +70,7 @@ namespace THOT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Unit user = db.Units.Find(id);
+            var user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -82,10 +82,10 @@ namespace THOT.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Administrator")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(ApplicationUser user)
         {
-            var user = db.Units.Find(id);
-            db.Units.Remove(user);
+            var userr = db.Users.Find(user.Id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

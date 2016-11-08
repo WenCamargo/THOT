@@ -22,6 +22,17 @@ namespace THOT.Controllers
             return View(answers.ToList());
         }
 
+
+        // GET: Answers / QuestionId
+        [Authorize(Roles = "Administrator, Student")]
+        public ActionResult QuestionsAnswers(int? id)
+        {
+
+            var answers = db.Answers.Where(x => x.QuestionId == id).Include(u => u.Question);
+            //var units2 = db.Units.OrderBy(u => u.Subject);
+            return View("Index", answers.ToList());
+        }
+
         // GET: Answers/Details/5
         public ActionResult Details(int? id)
         {

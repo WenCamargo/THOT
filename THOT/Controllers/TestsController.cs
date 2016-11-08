@@ -52,7 +52,7 @@ namespace THOT.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
-            ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "Number");
+            ViewBag.TopicId = new SelectList(db.Topics, "TopicId", "Name");
             return View();
         }
 
@@ -87,6 +87,7 @@ namespace THOT.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.TopicId = new SelectList(db.Topics , "TopicId", "Name", test.TopicId);            
             return View(test);
         }
 

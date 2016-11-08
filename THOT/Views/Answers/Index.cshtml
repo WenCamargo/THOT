@@ -1,19 +1,19 @@
 ﻿@model IEnumerable<THOT.Models.Answer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Respuestas";
 }
 
-<h2>Index</h2>
+<h2>Respuestas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@*<p>
+    @Html.ActionLink("Agregar Respuesta", "Create")
+</p>*@
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Question.Description)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
@@ -25,21 +25,36 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Question.Description)
-        </td>
+        </td>*@
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.Raw(item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsCorrect)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AnswerId }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.AnswerId }) |
             @Html.ActionLink("Details", "Details", new { id=item.AnswerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AnswerId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.AnswerId })*@
+            <a href="@Url.Action("Edit", new { id = item.AnswerId })">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <span class="sr-only">Edit</span>
+            </a>|
+            <a href="@Url.Action("Delete", new { id = item.AnswerId })">
+                <i class="glyphicon glyphicon-trash"></i>
+                <span class="sr-only">Delete</span>
+            </a>
         </td>
     </tr>
 }
 
 </table>
+
+<p>
+    <a href="@Url.Action("Index","Questions")">
+        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        <span class="sr-only">Back</span>
+    </a>
+</p>

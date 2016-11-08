@@ -1,19 +1,19 @@
 ﻿@model IEnumerable<THOT.Models.Question>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Preguntas";
 }
 
-<h2>Index</h2>
+<h2>Preguntas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar Pregunta", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Test.Name)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
@@ -22,18 +22,39 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Test.Name)
-        </td>
+        </td>*@
         <td>
             @Html.Raw(item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.QuestionId }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.QuestionId }) |
             @Html.ActionLink("Details", "Details", new { id=item.QuestionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.QuestionId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.QuestionId })*@
+
+            <a href="@Url.Action("QuestionsAnswers", "Answers", new { id = item.QuestionId })">
+                <i class="glyphicon glyphicon-file"></i>
+                <span class="sr-only">Details</span>
+            </a>|
+            <a href="@Url.Action("Edit", new { id = item.QuestionId })">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <span class="sr-only">Edit</span>
+            </a>|
+            <a href="@Url.Action("Delete", new { id = item.QuestionId })">
+                <i class="glyphicon glyphicon-trash"></i>
+                <span class="sr-only">Delete</span>
+            </a>
         </td>
     </tr>
 }
 
 </table>
+
+
+<p>
+    <a href="@Url.Action("Index","Tests")">
+        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        <span class="sr-only">Back</span>
+    </a>
+</p>
