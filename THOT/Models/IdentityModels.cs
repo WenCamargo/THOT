@@ -3,15 +3,20 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations;
 
 namespace THOT.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
       {
+        [Display(Name = "Nombre")]
         public string Name { get; set; }
+        [Display(Name = "Apellido Paterno")]
         public string FirstLastName { get; set; }
+        [Display(Name = "Apellido Materno")]
         public string SecondLastName { get; set; }
+        [Display(Name = "No. Boleta")]
         public string StudentId { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

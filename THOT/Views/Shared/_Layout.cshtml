@@ -24,7 +24,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Thot", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Thot", "About", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -33,7 +33,9 @@
                     @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                     @if (User.IsInRole("Administrator"))
                     {
-                        <li>@Html.ActionLink("Areas", "Index", "Areas")</li>
+                        <li>@Html.ActionLink("Ramas del Conocimiento", "Index", "Areas")</li>
+                        <li>@Html.ActionLink("Gestionar Usuarios", "Index", "UserManager")</li>
+
                         <li class="dropdown">
                             <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" href="#">Gestionar Cursos </a>
                             <ul class="dropdown-menu">
@@ -42,14 +44,15 @@
                                 <li>@Html.ActionLink("Temas", "Index", "Topics")</li>*@
                             </ul>
                         </li>
-                        <li class="dropdown">
+                        <li>@Html.ActionLink("Gestionar Tests", "Index", "Tests")</li>
+                        @*<li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Gestionar Test </a>
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Tests", "Index", "Tests")</li>
                                 <li>@Html.ActionLink("Preguntas", "Index", "Questions")</li>
                                 <li>@Html.ActionLink("Respuestas", "Index", "Answers")</li>
                             </ul>
-                        </li>
+                        </li>*@
                     }
                     else
                     {

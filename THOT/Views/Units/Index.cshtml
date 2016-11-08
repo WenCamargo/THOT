@@ -6,6 +6,7 @@
 
 @if (User.IsInRole("Administrator"))
 {
+    
 <h2>Unidades</h2>
 
 <p>
@@ -42,14 +43,18 @@
             @Html.ActionLink("Details", "Details", new { id = item.UnitId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.UnitId })*@
         
-            <a href="@Url.Action("Edit", new { id = item.UnitId })">
-                <i class="glyphicon glyphicon-pencil"></i>
-                <span class="sr-only">Edit</span>
-            </a>|
             <a href="@Url.Action("UnitsTopics","Topics", new { id= item.UnitId })">
                 <i class="glyphicon glyphicon-list-alt"></i>
                 <span class="sr-only">Details</span>
             </a>|
+            <a href="@Url.Action("Edit", new { id = item.UnitId })">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <span class="sr-only">Edit</span>
+            </a>|
+            @*<a href="@Url.Action("UnitsTopics","Topics", new { id= item.UnitId })">
+                <i class="glyphicon glyphicon-list-alt"></i>
+                <span class="sr-only">Details</span>
+            </a>|*@
             <a href="@Url.Action("Delete", new { id = item.UnitId })">
                 <i class="glyphicon glyphicon-trash"></i>
                 <span class="sr-only">Delete</span>

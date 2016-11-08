@@ -18,6 +18,7 @@ namespace THOT.Models
         [Required]
         [StringLength(50)]
         [Display(Name = "Nombre")]
+        //[RegularExpression("^[A-Za-z]+$", ErrorMessage = "Sólo se admiten letras")]
         public string Name { get; set; }
         public Topic Topic { get; set; }
         public List<Question> Questions { get; set; }

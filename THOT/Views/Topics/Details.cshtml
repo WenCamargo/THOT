@@ -60,9 +60,9 @@ else
            <div class="container">
                @Html.Raw(Model.Content)
            </div>
-       </div> 
-        
-       
+       </div>
+
+    @Html.ActionLink("Resolver Test", "ResolveTest", "Tests", new { id=Model.TopicId }, new { @class = "btn btn-info" })
 
     }
 

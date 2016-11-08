@@ -6,7 +6,7 @@ namespace THOT.Models
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "Correo Electrónico")]
         public string Email { get; set; }
     }
 
@@ -71,7 +71,7 @@ namespace THOT.Models
 
         [Required]
         [StringLength(100, ErrorMessage = "Debe haber al menos {2} caracteres de longitud.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password, ErrorMessage = "PRUEBA")]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
@@ -81,17 +81,24 @@ namespace THOT.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Sólo se admiten letras")]
+        [MaxLength(50), MinLength(3)]
         [Display(Name = "Nombre")]
         public string Name { get; set; }
         [Required]
+        [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Sólo se admiten letras")]
+        [MaxLength(50), MinLength(3)]
         [Display(Name = "Apellido Paterno")]
         public string FirstLastName { get; set; }
         [Required]
+        [RegularExpression("^[A-Za-z]+$", ErrorMessage = "Sólo se admiten letras")]
+        [MaxLength(50), MinLength(3)]
         [Display(Name = "Apellido Materno")]
         public string SecondLastName { get; set; }
         [Required]
-        //Expresion REGULAR
+        [RegularExpression("^[0-9]+$", ErrorMessage = "Sólo se admiten digitos")]
         [Display(Name = "Número de Boleta")]
+        [StringLength(10, ErrorMessage = "El numero de boleta se conforma por 10 digitos")]
         public string StudentId { get; set; }
     }
 

@@ -40,27 +40,15 @@
             {
                 
                 <div class="row">
-                    <div class="radio">
-                        <label><input type="radio" name="@q.QuestionId">@Html.Raw(HttpUtility.HtmlDecode( a.Description))</label>
-                    </div>                    
+                    @Html.Raw(HttpUtility.HtmlDecode(a.Description))
                 </div>
             }
         }
     
 
 </div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.TestId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-
-@foreach (var q in Model.Questions)
-{
-
-    foreach (var a in q.Answers)
-    {
-        @Html.Raw(q.Description)
-
-       @Html.Raw(a.Description)
-    }
-}
