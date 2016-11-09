@@ -70,9 +70,9 @@ else
         <h2>Temas</h2>
         <table class="table">
             <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Unit.Name)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Number)
                 </th>
@@ -85,9 +85,9 @@ else
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Unit.Name)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Number)
                     </td>

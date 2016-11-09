@@ -56,9 +56,9 @@ else
         <h2>Materias</h2>
         <table class="table">
             <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Area.Name)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
@@ -68,9 +68,9 @@ else
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Area.Name)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>

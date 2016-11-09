@@ -8,7 +8,6 @@
 {
     
 <h2>Unidades</h2>
-
 <p>
     @Html.ActionLink("Agregar Unidad", "Create")
 </p>
@@ -72,9 +71,9 @@ else
         <h2>Unidades</h2>
         <table class="table">
             <tr>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.Subject.Name)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.Number)
                 </th>
@@ -87,9 +86,9 @@ else
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Subject.Name)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.Number)
                     </td>

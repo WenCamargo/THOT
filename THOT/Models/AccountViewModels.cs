@@ -99,6 +99,7 @@ namespace THOT.Models
         [RegularExpression("^[0-9]+$", ErrorMessage = "Sólo se admiten digitos")]
         [Display(Name = "Número de Boleta")]
         [StringLength(10, ErrorMessage = "El numero de boleta se conforma por 10 digitos")]
+        [MinLength(10)]
         public string StudentId { get; set; }
     }
 
