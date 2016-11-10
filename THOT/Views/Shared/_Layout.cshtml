@@ -31,7 +31,9 @@
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>*@
                     @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
-                    @if (User.IsInRole("Administrator"))
+
+
+                    @if (User.IsInRole("Administrator"))////////ADMINISTRADOR
                     {
                         <li>@Html.ActionLink("Ramas del Conocimiento", "Index", "Areas")</li>
                         <li>@Html.ActionLink("Gestionar Usuarios", "Index", "UserManager")</li>
@@ -56,7 +58,7 @@
                     }
                     else
                     {
-                        if (User.IsInRole("Student"))
+                        if (User.IsInRole("Student"))///////ALUMNO
                         {
 
                            <li>@Html.ActionLink("Cursos", "Index", "Subjects")</li>
@@ -68,7 +70,7 @@
                     </ul>
 
                         @Html.Partial("_LoginPartial")
-</div>
+            </div>
         </div>
     </div>
     <div class="container body-content">
