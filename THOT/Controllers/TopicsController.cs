@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rotativa;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -150,6 +151,14 @@ namespace THOT.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult ExportPDF(int id)
+        {
+
+            return new ActionAsPdf("Details", new { id = id })
+            {
+                FileName = "Export.pdf"
+            };
         }
     }
 }
