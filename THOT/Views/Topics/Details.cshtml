@@ -61,10 +61,18 @@ else
                @Html.Raw(Model.Content)
            </div>
        </div>
+       
+    <div class="container">
+        <a href="@Url.Action("ExportPDF","Topics",new { id = Model.TopicId })">Exportar PDF </a>
+    </div>
+    <hr />
 
-    @Html.ActionLink("Resolver Test", "ResolveTest", "Tests", new { id=Model.TopicId }, new { @class = "btn btn-info" })
+    <div class="container" align ="center">
+         @Html.ActionLink("Resolver Test", "ResolveTest", "Tests", new { id=Model.TopicId }, new { @class = "btn btn-info" })
+    </div>
+   
     @*@Html.ActionLink("Exportar PDF", "ExportPDF", "Topics", new { id= Model.TopicId }, new { @class = "btn btn-info" })*@
-    <a href="@Url.Action("ExportPDF","Topics",new { id = Model.TopicId })">Exportar PDF</a>
+   
 
     }
 

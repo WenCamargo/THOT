@@ -16,8 +16,8 @@ namespace THOT.Controllers
         [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
-            var users = db.Users.ToList();
-            return View(users);
+            var users = db.Users ;
+            return View(users.ToList());
         }
 
         // GET: UserManager/Edit/5

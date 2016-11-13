@@ -6,8 +6,8 @@
 
 <h2>@Html.DisplayFor(model => model.Name)</h2>
 
-
-<div>   
+ 
+<div class="container">   
     <hr />
     @using (Html.BeginForm())
     {
@@ -29,7 +29,7 @@
                 {
                 <div class="row">
                     <div class="radio">
-                        <label><input type="radio" name="test.Questions['0']">@Html.Raw(HttpUtility.HtmlDecode(a.Description))</label>
+                        <label><input type="radio" name="@q.QuestionId">@Html.Raw(HttpUtility.HtmlDecode(a.Description))</label>
                     </div>
                 </div>
                 }
@@ -40,21 +40,6 @@
 
         </dl>
 
-        @*foreach (var q in Model.Questions)
-        {
-            <div class="row">
-                <div class="col-md-12">@Html.Raw(@q.Description)</div>
-            </div>
-
-            foreach (var a in q.Answers)
-            {
-                <div class="row">
-                    <div class="radio">
-                        <label><input type="radio" name="test.Questions['0']">@Html.Raw(HttpUtility.HtmlDecode(a.Description))</label>
-                    </div>
-                </div>
-            }
-        }*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
