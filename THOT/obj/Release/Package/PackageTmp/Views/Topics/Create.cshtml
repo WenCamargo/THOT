@@ -1,0 +1,117 @@
+﻿@model THOT.Models.Topic
+
+@{
+    ViewBag.Title = "Agregar Tema";
+}
+
+<h2>Agregar</h2>
+
+<script language="javascript" type="text/javascript">
+    function GetUnit(_subjectId) {
+        var procemessage = "<option value='0'> Please wait...</option>";
+        $("#CityID").html(procemessage).show();
+        var url = "/Subjects/GetUnitsBySubjectId/";
+
+        $.ajax({
+            url: url,
+            data: { id: _subjectId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#UnitId").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+    }
+</script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Tema</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Unit.Subject, "Materia", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SubjectId", null, htmlAttributes: new { @class = "form-control", @onchange = "javascript:GetUnit(this.value);" })
+                @Html.ValidationMessageFor(model => model.Unit.Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitId, "Unidad", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("UnitId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UnitId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Content)
+                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Agregar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index")">
+        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        <span class="sr-only">Back</span>
+    </a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+            var editor = CKEDITOR.instances['Content'];
+            if (editor) {
+                editor.destroy(true);
+            }
+            CKEDITOR.replace("Content", {
+
+                enterMode: CKEDITOR.ENTER_BR,
+                extraPlugins: 'mathjax',
+                mathJaxLib: 'http://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS_HTML',
+                height: 320
+            });
+            CKFinder.setupCKEditor(null, '@Url.Content("~/Content/ckfinder")');
+    </script>
+
+}

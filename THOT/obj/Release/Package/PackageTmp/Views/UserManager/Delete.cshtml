@@ -1,0 +1,48 @@
+﻿@model THOT.Models.ApplicationUser
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <h5>¿Estás seguro de eliminar este elemento?</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dd>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Eliminar" class="btn btn-default" />
+            }
+        </dd>
+
+    </dl>
+
+    <div class="form-actions no-color">
+        <a href="@Url.Action("Index")">
+            <i class="glyphicon glyphicon-circle-arrow-left"></i>
+            <span class="sr-only">Back</span>
+        </a>
+    </div>
+</div>

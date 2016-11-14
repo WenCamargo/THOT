@@ -1,0 +1,68 @@
+﻿@model THOT.Models.Test
+
+@{
+    ViewBag.Title = "Contenido Test";
+}
+
+<h2>Contenido</h2>
+
+<div>
+    <h4>Test</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TopicId)
+        </dt>*@
+
+        @*<dd>
+            @Html.DisplayFor(model => model.TopicId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>   
+        <dd>
+
+
+        </dd>
+       
+
+    </dl>
+
+    <dl class="dl-horizontal">
+
+        <dd>
+
+             @foreach (var q in Model.Questions)
+        {
+            <div class="row">
+                <div class="col-md-12">@Html.Raw(@q.Description)</div>
+            </div>
+
+            foreach (var a in q.Answers)
+            {
+
+                <div class="row">
+                    @Html.Raw(HttpUtility.HtmlDecode(a.Description))
+                </div>
+            }
+        }
+
+        </dd>
+       
+
+    </dl>        
+    
+
+</div>
+
+<p>
+    <a href="@Url.Action("Index")">
+        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        <span class="sr-only">Back</span>
+    </a>
+</p>

@@ -1,0 +1,81 @@
+﻿@model THOT.Models.Topic
+
+@{
+    ViewBag.Title = "Contenido";
+}
+@if (User.IsInRole("Administrator"))
+{
+<h2>Contenido</h2>
+
+<div>
+    <h4>Tema</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Content)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Index")">
+        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        <span class="sr-only">Back</span>
+    </a>
+</p>
+}
+else
+{
+    if (User.IsInRole("Student"))
+    {
+       <div class="jumbotron">
+           <div class="container">
+               @Html.Raw(Model.Content)
+           </div>
+       </div>
+       
+    <div class="container">
+        <a href="@Url.Action("ExportPDF","Topics",new { id = Model.TopicId })">Exportar PDF </a>
+    </div>
+    <hr />
+
+    <div class="container" align ="center">
+         @Html.ActionLink("Resolver Test", "ResolveTest", "Tests", new { id=Model.TopicId }, new { @class = "btn btn-info" })
+    </div>
+   
+    @*@Html.ActionLink("Exportar PDF", "ExportPDF", "Topics", new { id= Model.TopicId }, new { @class = "btn btn-info" })*@
+   
+
+    }
+
+}
+
+

@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+@if (User.IsInRole("Administrator"))
+{
+
+    <div class="jumbotron">
+        <h1 align="center">¡Bienvenido a THOT!</h1>
+        <br />
+        <p class="lead">Thot un sitio confiable donde se puede consultar información referente a las asignaturas que existen dentro del plan de estudios 2009 de la ESCOM son las siguientes</p>
+    </div>
+}
+else
+{
+    <div class="container">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="../../Images/thot3.jpg" alt="Bienvenida">
+                    <div class="carousel-caption">
+                        <h1>¡Bienvenido a Thot!</h1>
+                        <p>Thot un sitio confiable donde se puede consultar información referente a las asignaturas que existen dentro del plan de estudios 2009 de la ESCOM son las siguientes</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="../../Images/Imagen3.jpg" alt="Cursos">
+                    <div class="carousel-caption">
+                        <h1>Cursos</h1>
+                        <p>Temas de Asignaturas pertenecientes al plan de estudios de la carrera de Ingeniería en Sistemas Computacionales (ISC) de la Escuela Superior de Cómputo (ESCOM) del Instituto Politécnico Nacional (IPN).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+ <div class="container">
+     <div class="row">
+         <div class="col-md-4">
+             <h2>Diseño Responsivo</h2>
+             <p>
+                 Una importante característica que permite que Thot sea visible en múltiples dispositivos electrónicos, tales como PC, Laptop y Dispositivos móviles.
+             </p>
+         </div>
+         <div class="col-md-4">
+             <h2>Confiabilidad</h2>
+             <p>En Thot se pretende utilizar ejercicios y prácticas que son utilizados por profesores de la ESCOM en diversas asignaturas con su desarrollo completo y claro para el fácil entendimiento de cada tema.</p>
+         </div>
+         <div class="col-md-4">
+             <h2>Ayuda y Soporte Técnico</h2>
+             <p>En Thot estamos dispuestos a ofrecer un servicio de ayuda para eliminar cualquier inconveniente que pueda surgir durante la utilización del sistema, por lo que ofrecemos métodos de contacto con los miembros del equipo de trabajo.</p>
+         </div>
+     </div>
+ </div>
+
+        
+
+
+        }
+
+
+
+
+
+
+

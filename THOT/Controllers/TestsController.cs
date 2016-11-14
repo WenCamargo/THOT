@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -168,13 +169,106 @@ namespace THOT.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ResolveTest(Test test)
-        {
-            if (ModelState.IsValid)
+        {              
+            for(var q = 0; q <= test.Questions.Count-1; q++)
             {
-                db.Entry(test).State = EntityState.Modified;
+                StudentTestQuestionAnswer stqa = new StudentTestQuestionAnswer();
+                stqa.UserId = User.Identity.GetUserId();
+                stqa.TestId = test.TestId;
+                stqa.QuestionId = test.Questions[q].QuestionId;
+                stqa.AnswerId = int.Parse(test.Questions[q].SelectAnswer);
+
+                db.StudentTestQuestionAnswers.Add(stqa);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
+
+            var userId = User.Identity.GetUserId();
+            var stqs = db.StudentTestQuestionAnswers.Where(x => x.UserId == userId && x.TestId == test.TestId);
+
+            var questions = db.Questions.Where(x => x.TestId == test.TestId).ToList();
+
+            float correctAnswersTotal = 0;
+
+            // Fill questions
+            foreach (var q in questions)
+            {
+                // Correct Answer
+                var correctAnswer = db.Answers.Where(x => x.QuestionId == q.QuestionId
+                                            && x.IsCorrect == true).FirstOrDefault();
+
+                // Selected Answer
+                var selectedAnswer = db.Answers.Where(x => x.QuestionId == q.QuestionId &&
+                                                      (x.AnswerId == stqs.Where(y => y.QuestionId == q.QuestionId).FirstOrDefault().AnswerId)).FirstOrDefault();
+
+                q.Answers = new List<Answer>();
+                q.Answers.Add(correctAnswer);
+                if (selectedAnswer != correctAnswer)
+                    q.Answers.Add(selectedAnswer);
+                else
+                    correctAnswersTotal += 1;
+            }
+
+            test.Questions = questions;
+
+            // Calculate score
+            float questionsTotal = test.Questions.Count;
+            float grade = (correctAnswersTotal / questionsTotal) * 10;
+
+            // Add experience points
+
+            // Add student test
+            var studentTest = new StudentTest();
+            studentTest.CreationDate = DateTime.Now;
+            studentTest.UserId = userId;
+            studentTest.TestId = test.TestId;
+            studentTest.Grade = grade;
+
+            db.StudentTests.Add(studentTest);
+            db.SaveChanges();
+
+            return RedirectToAction("TestSummary", new { id = test.TestId });
+        }
+
+        // GET: Tests/TestSummary/5
+        [Authorize(Roles = "Student")]
+        public ActionResult TestSummary(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var test = db.Tests.Where(x => x.TopicId == id).FirstOrDefault();
+            var userId = User.Identity.GetUserId();
+            var stqs = db.StudentTestQuestionAnswers.Where(x => x.UserId == userId && x.TestId == test.TestId);
+
+            var questions = db.Questions.Where(x => x.TestId == test.TestId).ToList();
+
+            foreach (var q in questions)
+            {
+                // Correct Answer
+                var correctAnswer = db.Answers.Where(x => x.QuestionId == q.QuestionId
+                                            && x.IsCorrect == true).FirstOrDefault();
+
+                // Selected Answer
+                var selectedAnswer = db.Answers.Where(x => x.QuestionId == q.QuestionId &&
+                                                      (x.AnswerId == stqs.Where(y=> y.QuestionId == q.QuestionId).FirstOrDefault().AnswerId)).FirstOrDefault();
+
+                q.Answers = new List<Answer>();
+                q.Answers.Add(correctAnswer);
+                if (selectedAnswer != correctAnswer)
+                    q.Answers.Add(selectedAnswer);
+            }
+
+            test.Questions = questions;
+
+            if (test == null)
+            {
+                return HttpNotFound();
+            }
+
+            var studentTest = db.StudentTests.Where(x=> x.TestId == test.TestId && x.UserId == userId).FirstOrDefault();
+
+            ViewBag.Score = studentTest.Grade;
 
             return View(test);
         }

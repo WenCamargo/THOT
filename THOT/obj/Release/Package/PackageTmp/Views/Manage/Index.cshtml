@@ -1,0 +1,28 @@
+﻿@model THOT.Models.IndexViewModel
+@{
+    ViewBag.Title = "Configuración";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    @*<h4>Cambiar datos de la Cuenta</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Contraseña:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Cambiar Contraseña", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+       
+    </dl>
+</div>

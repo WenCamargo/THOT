@@ -258,6 +258,22 @@
     <Compile Include="Migrations\201611032349286_Ten.Designer.cs">
       <DependentUpon>201611032349286_Ten.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611140039116_eleven.cs" />
+    <Compile Include="Migrations\201611140039116_eleven.Designer.cs">
+      <DependentUpon>201611140039116_eleven.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611140101322_twelve.cs" />
+    <Compile Include="Migrations\201611140101322_twelve.Designer.cs">
+      <DependentUpon>201611140101322_twelve.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611140114598_tthirteen.cs" />
+    <Compile Include="Migrations\201611140114598_tthirteen.Designer.cs">
+      <DependentUpon>201611140114598_tthirteen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611140746105_fourteen.cs" />
+    <Compile Include="Migrations\201611140746105_fourteen.Designer.cs">
+      <DependentUpon>201611140746105_fourteen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -267,6 +283,7 @@
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Score.cs" />
     <Compile Include="Models\StudentTest.cs" />
+    <Compile Include="Models\StudentTestQuestionAnswer.cs" />
     <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\Topic.cs" />
@@ -305,6 +322,7 @@
     </Content>
     <Content Include="ClassDiagram1.cd" />
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\PublishProfiles\tothbuzany - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -402,6 +420,7 @@
     <Content Include="Views\UserManager\Edit.cshtml" />
     <Content Include="Views\UserManager\Delete.cshtml" />
     <Content Include="Views\UserManager\Index.cshtml" />
+    <Content Include="Views\Tests\TestSummary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -448,6 +467,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611032349286_Ten.resx">
       <DependentUpon>201611032349286_Ten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611140039116_eleven.resx">
+      <DependentUpon>201611140039116_eleven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611140101322_twelve.resx">
+      <DependentUpon>201611140101322_twelve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611140114598_tthirteen.resx">
+      <DependentUpon>201611140114598_tthirteen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611140746105_fourteen.resx">
+      <DependentUpon>201611140746105_fourteen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

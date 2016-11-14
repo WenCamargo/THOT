@@ -1,0 +1,47 @@
+﻿@model THOT.Models.Test
+
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+ 
+<div class="container">   
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.TestId)
+        @Html.HiddenFor(model => model.Name)
+
+        <dl class="dl-horizontal">
+            <dd>
+                @for(int i = 0; i <= Model.Questions.Count-1; i++)
+                {
+                    <div class="row">
+                        @Html.HiddenFor(x=> Model.Questions[i].QuestionId)
+                        @Html.HiddenFor(x => Model.Questions[i].TestId)
+                        <div class="col-md-12">@Html.Label(Model.Questions[i].Description)</div>
+                    </div>
+
+                    for (int j = 0; j <= Model.Questions[i].Answers.Count-1; j++)
+                    {
+                        <div class="row">
+                            @Html.HiddenFor(x => Model.Questions[i].Answers[j].AnswerId)
+                            @Html.HiddenFor(x => Model.Questions[i].Answers[j].QuestionId)
+                            <div class="col-md-12">@Html.RadioButtonFor(x=>Model.Questions[i].SelectAnswer, Model.Questions[i].Answers[j].AnswerId) @Html.Label(Model.Questions[i].Answers[j].Description)</div>
+                        </div>
+                    }
+                }
+            </dd>
+        </dl>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enviar" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,68 @@
+﻿@model THOT.Models.Test
+
+@{
+    ViewBag.Title = "TestSummary";
+}
+
+<h2>TestSummary</h2>
+
+<div>
+    <h4>Test</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.Label("Total")
+        </dt>
+
+        <dd>
+            @ViewBag.Score
+        </dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+        <dd>
+            @for (int i = 0; i <= Model.Questions.Count - 1; i++)
+            {
+                <div class="row">
+                    <div class="col-md-12">@Html.Label(Model.Questions[i].Description)</div>
+                </div>
+
+                for (int j = 0; j <= Model.Questions[i].Answers.Count - 1; j++)
+                {
+                    <div class="row">
+                        @if (Model.Questions[i].Answers[j].IsCorrect)
+                        {
+                            <div class="col-md-12">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                @Html.Label(Model.Questions[i].Answers[j].Description)
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-12">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                @Html.Label(Model.Questions[i].Answers[j].Description)
+                            </div>
+                        }
+                    </div>
+                }
+            }
+        </dd>
+    </dl>
+</div>

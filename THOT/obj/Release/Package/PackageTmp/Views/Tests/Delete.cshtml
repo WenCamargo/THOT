@@ -1,0 +1,51 @@
+﻿@model THOT.Models.Test
+
+@{
+    ViewBag.Title = "Eliminar Test";
+}
+
+<h2>Eliminar</h2>
+
+
+<div>
+    <h4>Test</h4>
+    <h5>¿Estás seguro de eliminar este elemento?</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.TopicId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TopicId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dd>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Eliminar" class="btn btn-default" />
+            }
+        </dd>
+
+      
+
+    </dl>
+
+    <div class="form-actions no-color">
+        @*@Html.ActionLink("Back to List", "Index")*@
+        <a href="@Url.Action("Index")">
+            <i class="glyphicon glyphicon-circle-arrow-left"></i>
+            <span class="sr-only">Back</span>
+        </a>
+    </div>
+
+</div>

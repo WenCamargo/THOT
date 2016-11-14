@@ -48,7 +48,6 @@ namespace THOT.Models
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Unit>Units { get; set; }
         public DbSet<StudentTest> StudentTests { get; set; }
-
-
+        public DbSet<StudentTestQuestionAnswer> StudentTestQuestionAnswers { get; set; }
     }
 }

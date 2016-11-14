@@ -19,5 +19,6 @@ namespace THOT.Models
         public string Description { get; set; }
         public Test Test { get; set; }
         public List<Answer> Answers { get; set; }
+        public string SelectAnswer { get; set; }
     }
 }

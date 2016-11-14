@@ -1,0 +1,45 @@
+﻿@model IEnumerable<THOT.Models.Area>
+
+@{
+    ViewBag.Title = "Ramas de Conocimiento";
+}
+
+<h2>Rama de Conocimiento </h2>
+
+<p>
+    @Html.ActionLink("Agregar Rama", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+           @* @Html.ActionLink("Edit", "Edit", new { id=item.AreaId }) |*@
+            <a href="@Url.Action("Edit", new { id=item.AreaId})">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <span class="sr-only">Edit</span>
+            </a>|
+            @*@Html.ActionLink("Details", "Details", new { id=item.AreaId }) |*@ 
+            @*<a href="@Url.Action("Details", new { id=item.AreaId})">
+                <i class="glyphicon glyphicon-info-sign"></i>
+                <span class="sr-only">Details</span>
+            </a>|*@
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.AreaId })*@
+            <a href="@Url.Action("Delete", new { id=item.AreaId})">
+                <i class="glyphicon glyphicon-trash"></i>
+                <span class="sr-only">Delete</span>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>

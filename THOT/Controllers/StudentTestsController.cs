@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -17,7 +18,12 @@ namespace THOT.Controllers
         // GET: StudentTests
         public ActionResult Index()
         {
-            var studentTests = db.StudentTests.Include(s => s.Test);
+            var userId = User.Identity.GetUserId();
+            var studentTests = db.StudentTests.Where(x => x.UserId == userId).ToList();
+            
+            foreach(var s in studentTests)
+                s.Test = db.Tests.Where(x => x.TestId == s.TestId).FirstOrDefault();
+
             return View(studentTests.ToList());
         }
 
